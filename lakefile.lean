@@ -1,15 +1,15 @@
 import Lake
 open Lake DSL
 
-package hw7 {
+package hw9 {
   -- add package configuration options here
 }
 
-lean_lib Hw7 {
+lean_lib Sets {
   -- add library configuration options here
 }
 
 @[defaultTarget]
-lean_exe hw7 {
+lean_exe hw9 {
   root := `Main
 }
