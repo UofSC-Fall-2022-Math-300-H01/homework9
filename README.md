@@ -1,3 +1,4 @@
-## Homework 7
+## Homework 9
 
-Make Lean accept your proofs for the problems. 
+We look at sets in Lean 4. Since set theory hasn't yet stabilized, 
+we include our own library with basic definitions, results, and notations. 
