@@ -1,0 +1,104 @@
+{
+    "tests": [
+      {
+        "name": "Checking Problem 1 Type",
+        "setup": "",
+        "run": "lake env lean _Tests/Problem1.lean",
+        "input" : "",
+        "output": "true",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+      },
+      {
+        "name": "Checking Problem 1 Axioms",
+        "setup": "",
+        "run": "lake env lean _Tests/Problem1.lean",
+        "input" : "",
+        "output": "[]",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+      },
+      {
+        "name": "Checking Problem 2 Type",
+        "setup": "",
+        "run": "lake env lean _Tests/Problem2.lean",
+        "input" : "",
+        "output": "true",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+      },
+      {
+        "name": "Checking Problem 2 Axioms",
+        "setup": "",
+        "run": "lake env lean _Tests/Problem2.lean",
+        "input" : "",
+        "output": "[]",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+      },
+      {
+        "name": "Checking Problem 3 Type",
+        "setup": "",
+        "run": "lake env lean _Tests/Problem3.lean",
+        "input" : "",
+        "output": "true",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+      },
+      {
+        "name": "Checking Problem 3 Axioms",
+        "setup": "",
+        "run": "lake env lean _Tests/Problem3.lean",
+        "input" : "",
+        "output": "[]",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+      },
+      {
+        "name": "Checking Problem 4 Type",
+        "setup": "",
+        "run": "lake env lean _Tests/Problem4.lean",
+        "input" : "",
+        "output": "true",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+      },
+      {
+        "name": "Checking Problem 4 Axioms",
+        "setup": "",
+        "run": "lake env lean _Tests/Problem4.lean",
+        "input" : "",
+        "output": "[]",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+      },
+      {
+        "name": "Checking Problem 5 Type",
+        "setup": "",
+        "run": "lake env lean _Tests/Problem5.lean",
+        "input" : "",
+        "output": "true",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+      },
+      {
+        "name": "Checking Problem 5 Axioms",
+        "setup": "",
+        "run": "lake env lean _Tests/Problem5.lean",
+        "input" : "",
+        "output": "[]",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+      }
+]
+}
