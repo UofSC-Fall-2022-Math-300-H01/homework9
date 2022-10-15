@@ -93,16 +93,14 @@ theorem set_ext : X = Y ↔ (∀ (x:α), x ∈ X ↔ x ∈ Y) := by
     intro x 
     exact propext (h x) 
 
-section 
-set_option hygiene false 
-syntax "set_extensionality" : tactic
+syntax (name := set_extensionality) "set_extensionality" (colGt ident) : tactic
 macro_rules
-| `(tactic| set_extensionality ) => `(tactic| apply set_ext.mpr <;> intro x <;> constructor ) 
-end 
-
-syntax "setext" : tactic
-macro_rules
-| `(tactic| setext ) => `(tactic| apply set_ext.mpr) -- <;> intro h $(x?)? <;> constructor ) 
+| `(tactic| set_extensionality $e:ident ) => 
+    `(tactic| apply set_ext.mpr ; intro $e:ident ; constructor ) 
+--
+-- syntax "set_extensionality x" : tactic
+-- macro_rules
+-- | `(tactic| set_extensionality x ) => `(tactic| apply set_ext.mpr) -- <;> intro h $(x?)? <;> constructor ) 
 
 theorem sub_left_of_union : X ⊆ X ∪ Y := by 
   intro x h 
@@ -155,23 +153,19 @@ theorem diff_union_eq : X \ Y ∪ (X ∩ Y) = X := by
     | inr g₁ => exact Or.inl ⟨h,g₁⟩ 
 
 theorem comp_comp_eq : (Xᶜ)ᶜ = X := by
-  setext
-  intro x 
-  constructor 
+  set_extensionality x
   · intro h 
     apply Classical.byContradiction
     exact fun n => h n 
   · exact fun h v => v h
   
 theorem comp_eq_univ_diff : Xᶜ = Univ \ X := by 
-  setext <;> intro x <;> constructor 
+  set_extensionality x 
   · exact fun h => ⟨trivial,h⟩ 
   · exact fun h => h.right 
 
 theorem union_assoc : X ∪ Y ∪ Z = X ∪ (Y ∪ Z) := by 
-  setext
-  intro x 
-  constructor 
+  set_extensionality x
   · intro h 
     cases h with 
     | inl g₁ => cases g₁ with
@@ -186,9 +180,7 @@ theorem union_assoc : X ∪ Y ∪ Z = X ∪ (Y ∪ Z) := by
       | inr g₂ => exact Or.inr g₂ 
 
 theorem empty_union_eq : ∅ ∪ X = X := by 
-  setext
-  intro x 
-  constructor 
+  set_extensionality x
   · intro h 
     cases h with 
     | inl g => exact False.elim g 
@@ -197,30 +189,24 @@ theorem empty_union_eq : ∅ ∪ X = X := by
     exact .inr h 
 
 theorem empty_inter_empty : ∅ ∩ X = ∅ := by 
-  setext 
-  intro x 
-  constructor 
+  set_extensionality x 
   · exact fun h => False.elim h.left 
   · exact fun h => False.elim h 
 
 theorem not_mem_empty (x : α) : x ∉ Emptyset := fun h => h 
 
 theorem diff_empty_eq : X \ ∅ = X := by 
-  setext 
-  intro x 
-  constructor 
+  set_extensionality x 
   · exact fun h => And.left h 
   · exact fun h => ⟨h,not_mem_empty x⟩  
 
 theorem univ_union_univ : Univ ∪ X = Univ := by 
-  setext
-  intro x 
-  constructor 
+  set_extensionality x
   · exact fun _ => trivial  
   · exact sub_left_of_union _ 
 
 theorem dist_inter_union : X ∩ (Y ∪ Z) = (X ∩ Y) ∪ (X ∩ Z) := by
-  setext <;> intro x <;> constructor 
+  set_extensionality x 
   · intro h  
     cases h.right with 
     | inl g₃ => exact Or.inl ⟨h.left,g₃⟩  
@@ -231,7 +217,7 @@ theorem dist_inter_union : X ∩ (Y ∪ Z) = (X ∩ Y) ∪ (X ∩ Z) := by
     | inr g => exact ⟨g.left,Or.inr g.right⟩ 
 
 theorem dist_union_inter : X ∪ (Y ∩ Z) = (X ∪ Y) ∩ (X ∪ Z) := by 
-  setext <;> intro x <;> constructor 
+  set_extensionality x 
   · intro h 
     cases h with 
     | inl g => exact ⟨ Or.inl g, Or.inl g⟩ 
