@@ -3,7 +3,7 @@ name: GitHub Classroom Workflow
 on: 
   push:
     paths:
-    - 'Hw5.lean'
+    - 'Hw9.lean'
 
 jobs:
   build:
