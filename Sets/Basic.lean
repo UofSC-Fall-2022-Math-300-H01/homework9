@@ -93,17 +93,22 @@ theorem set_ext : X = Y ↔ (∀ (x:α), x ∈ X ↔ x ∈ Y) := by
     intro x 
     exact propext (h x) 
 
-syntax (name := set_extensionality) "set_extensionality" (colGt ident) : tactic
+syntax (name := set_extensionality) "set_extensionality" ident : tactic
 macro_rules
 | `(tactic| set_extensionality $e:ident ) => 
     `(tactic| apply set_ext.mpr ; intro $e:ident ; constructor ) 
---
--- syntax "set_extensionality x" : tactic
+
+syntax (name := assume) "assume" "("ident":" term")": tactic
+macro_rules
+| `(tactic| assume ($e:ident:$ty:term)) => `(tactic| intro ($e:ident:$ty:term) ) 
+
+-- syntax "set_extensionality" : tactic
 -- macro_rules
--- | `(tactic| set_extensionality x ) => `(tactic| apply set_ext.mpr) -- <;> intro h $(x?)? <;> constructor ) 
+-- | `(tactic| set_extensionality ) => `(tactic| apply set_ext.mpr) -- <;> intro h $(x?)? <;> constructor ) 
 
 theorem sub_left_of_union : X ⊆ X ∪ Y := by 
-  intro x h 
+  assume (x:α) 
+  assume (h:x ∈ X) 
   exact Or.inl h 
 
 theorem sub_right_of_union : Y ⊆ X ∪ Y := by 
