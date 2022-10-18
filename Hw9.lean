@@ -6,7 +6,6 @@ variable (α β : Type)
 variable (X Y Z : Set α)
 variable (W : Set β) 
 
-
 theorem problem1 : ∅ ∈ 𝒫  X := sorry 
 
 theorem problem2 (U : β → Set α) : ∀ b, U b ⊆ BigUnion U := sorry 
