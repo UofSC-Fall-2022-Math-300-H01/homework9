@@ -75,7 +75,7 @@
         "setup": "",
         "run": "lake env lean _Tests/Problem4.lean",
         "input" : "",
-        "output": "[]",
+        "output": "[Quot.sound, propext, Classical.choice]",
         "comparison": "included",
         "timeout": 10,
         "points": 1
@@ -95,7 +95,7 @@
         "setup": "",
         "run": "lake env lean _Tests/Problem5.lean",
         "input" : "",
-        "output": "[]",
+        "output": "[Quot.sound, propext]",
         "comparison": "included",
         "timeout": 10,
         "points": 1
